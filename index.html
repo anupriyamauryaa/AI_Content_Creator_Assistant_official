@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorAI Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">AI</div>
+            <span>CreatorAI Studio</span>
+        </div>
+
+        <div class="menu">
+
+            <button class="menu-item active" onclick="openTool('dashboard', this)">
+                <span>▦</span>
+                Dashboard
+            </button>
+
+            <button class="menu-item" onclick="openTool('writer', this)">
+                <span>✎</span>
+                AI Content Writer
+            </button>
+
+            <button class="menu-item" onclick="openTool('captions', this)">
+                <span>▣</span>
+                IG Captions
+            </button>
+
+            <button class="menu-item" onclick="openTool('hashtags', this)">
+                <span>#</span>
+                Hashtag Gen
+            </button>
+
+            <button class="menu-item" onclick="openTool('ytTitles', this)">
+                <span>▶</span>
+                YT Titles
+            </button>
+
+            <button class="menu-item" onclick="openTool('ytDescription', this)">
+                <span>▤</span>
+                YT Description
+            </button>
+
+            <button class="menu-item" onclick="openTool('blog', this)">
+                <span>▤</span>
+                Blog Builder
+            </button>
+
+            <button class="menu-item" onclick="openTool('rewriter', this)">
+                <span>✣</span>
+                Content Rewriter
+            </button>
+
+            <button class="menu-item" onclick="openTool('ideas', this)">
+                <span>💡</span>
+                Idea Generator
+            </button>
+
+            <button class="menu-item" onclick="openTool('tone', this)">
+                <span>♟</span>
+                Tone Changer
+            </button>
+
+            <button class="menu-item" onclick="openTool('analyzer', this)">
+                <span>▥</span>
+                Content Analyzer
+            </button>
+
+        </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubtitle">Create better content with AI</p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">R</div>
+                <span>Creator</span>
+            </div>
+        </header>
+
+
+        <section class="content">
+
+            <!-- DASHBOARD -->
+            <div id="dashboard" class="tool-page active-page">
+
+                <div class="welcome">
+                    <h2>Welcome to CreatorAI Studio</h2>
+                    <p>Choose an AI tool from the sidebar to start creating content.</p>
+                </div>
+
+                <div class="cards">
+
+                    <div class="card" onclick="selectFromCard('writer')">
+                        <span class="card-icon">✎</span>
+                        <h3>AI Content Writer</h3>
+                        <p>Generate high-quality content instantly.</p>
+                    </div>
+
+                    <div class="card" onclick="selectFromCard('captions')">
+                        <span class="card-icon">▣</span>
+                        <h3>Instagram Captions</h3>
+                        <p>Create engaging social media captions.</p>
+                    </div>
+
+                    <div class="card" onclick="selectFromCard('hashtags')">
+                        <span class="card-icon">#</span>
+                        <h3>Hashtag Generator</h3>
+                        <p>Generate relevant hashtags for your topic.</p>
+                    </div>
+
+                    <div class="card" onclick="selectFromCard('ideas')">
+                        <span class="card-icon">💡</span>
+                        <h3>Idea Generator</h3>
+                        <p>Get new content ideas using AI.</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- AI WRITER -->
+            <div id="writer" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>AI Content Writer</h2>
+                    <p>Generate content based on your topic.</p>
+
+                    <label>Topic</label>
+                    <input id="writerTopic"
+                           placeholder="Example: Benefits of Artificial Intelligence">
+
+                    <label>Content Type</label>
+                    <select id="writerType">
+                        <option>Blog Post</option>
+                        <option>Social Media Post</option>
+                        <option>Article</option>
+                        <option>Marketing Copy</option>
+                    </select>
+
+                    <button class="generate-btn" onclick="generateWriter()">
+                        Generate Content
+                    </button>
+
+                    <div id="writerResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- INSTAGRAM CAPTIONS -->
+            <div id="captions" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Instagram Caption Generator</h2>
+
+                    <label>Topic</label>
+                    <input id="captionTopic"
+                           placeholder="Example: Mountain trip">
+
+                    <label>Style</label>
+                    <select id="captionStyle">
+                        <option>Creative</option>
+                        <option>Funny</option>
+                        <option>Professional</option>
+                        <option>Motivational</option>
+                    </select>
+
+                    <button class="generate-btn" onclick="generateCaption()">
+                        Generate Caption
+                    </button>
+
+                    <div id="captionResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- HASHTAGS -->
+            <div id="hashtags" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Hashtag Generator</h2>
+                    <p>Generate hashtags for Instagram, YouTube and other platforms.</p>
+
+                    <label>Topic</label>
+                    <input id="hashtagTopic"
+                           placeholder="Example: Dance">
+
+                    <button class="generate-btn" onclick="generateHashtags()">
+                        Generate Hashtags
+                    </button>
+
+                    <div id="hashtagResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- YOUTUBE TITLES -->
+            <div id="ytTitles" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>YouTube Title Generator</h2>
+
+                    <label>Video Topic</label>
+                    <input id="ytTitleTopic"
+                           placeholder="Example: AI tools for students">
+
+                    <button class="generate-btn" onclick="generateYtTitles()">
+                        Generate Titles
+                    </button>
+
+                    <div id="ytTitleResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- YOUTUBE DESCRIPTION -->
+            <div id="ytDescription" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>YouTube Description Generator</h2>
+
+                    <label>Video Topic</label>
+                    <input id="ytDescTopic"
+                           placeholder="Example: Best AI tools">
+
+                    <button class="generate-btn" onclick="generateYtDescription()">
+                        Generate Description
+                    </button>
+
+                    <div id="ytDescResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- BLOG -->
+            <div id="blog" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Blog Builder</h2>
+
+                    <label>Blog Topic</label>
+                    <input id="blogTopic"
+                           placeholder="Example: Future of AI">
+
+                    <button class="generate-btn" onclick="generateBlog()">
+                        Build Blog
+                    </button>
+
+                    <div id="blogResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- REWRITER -->
+            <div id="rewriter" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Content Rewriter</h2>
+
+                    <label>Enter Content</label>
+                    <textarea id="rewriteText"
+                              placeholder="Paste your content here..."></textarea>
+
+                    <button class="generate-btn" onclick="rewriteContent()">
+                        Rewrite Content
+                    </button>
+
+                    <div id="rewriteResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- IDEA GENERATOR -->
+            <div id="ideas" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Content Idea Generator</h2>
+
+                    <label>Topic</label>
+                    <input id="ideaTopic"
+                           placeholder="Example: Technology">
+
+                    <button class="generate-btn" onclick="generateIdeas()">
+                        Generate Ideas
+                    </button>
+
+                    <div id="ideaResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- TONE CHANGER -->
+            <div id="tone" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Tone Changer</h2>
+
+                    <label>Content</label>
+                    <textarea id="toneText"
+                              placeholder="Enter your content..."></textarea>
+
+                    <label>Select Tone</label>
+                    <select id="toneType">
+                        <option>Professional</option>
+                        <option>Friendly</option>
+                        <option>Funny</option>
+                        <option>Persuasive</option>
+                        <option>Simple</option>
+                    </select>
+
+                    <button class="generate-btn" onclick="changeTone()">
+                        Change Tone
+                    </button>
+
+                    <div id="toneResult" class="result"></div>
+                </div>
+
+            </div>
+
+
+            <!-- ANALYZER -->
+            <div id="analyzer" class="tool-page">
+
+                <div class="tool-box">
+                    <h2>Content Analyzer</h2>
+
+                    <label>Content</label>
+                    <textarea id="analyzeText"
+                              placeholder="Paste your content..."></textarea>
+
+                    <button class="generate-btn" onclick="analyzeContent()">
+                        Analyze Content
+                    </button>
+
+                    <div id="analyzeResult" class="result"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -356,3 +356,41 @@ select {
         padding: 20px;
     }
 }
+
+.my-footer{
+  margin-top: 30px;
+  padding: 18px 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #1A1040, #22164F);
+  border-top: 1px solid #5A3EFF;
+  border-radius: 16px 16px 0 0;
+  font-family: 'Poppins', sans-serif;
+}
+.my-footer p{
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.my-footer .heart{
+  color: #FF3CAC;
+  animation: beat 1s infinite;
+  display: inline-block;
+}
+.my-footer .name{
+  background: linear-gradient(90deg, #FF6BFF, #FFD86B, #6BFFB8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+  font-weight: 900;
+}
+.my-footer small{
+  display: block;
+  margin-top: 6px;
+  font-size: 10px;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
+@keyframes beat{
